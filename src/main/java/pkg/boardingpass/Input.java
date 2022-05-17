@@ -1,14 +1,15 @@
 package pkg.boardingpass;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.Scanner;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  * Class manages user input.
  * For now, does so through console.
  */
-public class Input {
+public class Input extends Application {
     private String name;
     private String email;
     private String phoneNum;
@@ -19,27 +20,15 @@ public class Input {
     private String departure; //Change to LocalDateTime if necessary
 
     public Input(){
-        try{
-            Scanner in = new Scanner(System.in);
-            System.out.println("Enter your name: ");
-            name = in.nextLine();
-            System.out.println("Enter your email: ");
-            email = in.nextLine();
-            System.out.println("Enter your phone number: ");
-            phoneNum = in.nextLine();
-            System.out.println("Enter your gender: ");
-            gender = in.nextLine();
-            System.out.println("Enter your age: ");
-            age = in.nextLine();
-            System.out.println("Enter the current date: "); //assumes correct input (if using gui might not matter)
-            date = in.nextLine();
-            System.out.println("Enter your destination: ");
-            destination = in.nextLine();
-            System.out.println("Enter the date of departure: "); //assumes correct input (if using gui might not matter)
-            departure = in.nextLine();
-        } catch (Exception e) {
-            System.err.println("Could not get user input.");
-        }
+
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        Scene form = new Scene(FXMLLoader.load(getClass().getResource("form.fxml")));
+        stage.setTitle("Boarding Pass Registration");
+        stage.setScene(form);
+        stage.show();
     }
 
     /**
