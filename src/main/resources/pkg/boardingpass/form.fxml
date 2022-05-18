@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="pkg.boardingpass.FormController">
+<GridPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pkg.boardingpass.FormController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="122.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="345.0" minWidth="10.0" prefWidth="345.0" />
@@ -44,7 +44,7 @@
       <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" text="Phone Number:" textAlignment="RIGHT" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
       <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" text="Gender:" textAlignment="RIGHT" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
       <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" text="Age:" textAlignment="RIGHT" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-      <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" text="Date:" textAlignment="RIGHT" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+      <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" text="Current Date:" textAlignment="RIGHT" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
       <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" text="Destination:" textAlignment="RIGHT" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
       <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" text="Departure Time:" textAlignment="RIGHT" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
       <TextField fx:id="name" alignment="TOP_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER">
@@ -73,9 +73,9 @@
       </TextField>
       <SplitMenuButton fx:id="gender" mnemonicParsing="false" text="Select" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4">
         <items>
-          <MenuItem mnemonicParsing="false" text="Male" onAction="#changeValGen"/>
-          <MenuItem mnemonicParsing="false" text="Female" onAction="#changeValGen"/>
-            <MenuItem mnemonicParsing="false" text="Other" onAction="#changeValGen"/>
+          <MenuItem mnemonicParsing="false" onAction="#changeValGen" text="Male" />
+          <MenuItem mnemonicParsing="false" onAction="#changeValGen" text="Female" />
+            <MenuItem mnemonicParsing="false" onAction="#changeValGen" text="Other" />
         </items>
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -93,8 +93,8 @@
       </DatePicker>
       <SplitMenuButton fx:id="destination" mnemonicParsing="false" text="Select" GridPane.columnIndex="1" GridPane.rowIndex="7">
         <items>
-          <MenuItem mnemonicParsing="false" text="LAX" onAction="#changeValDest"/>
-          <MenuItem mnemonicParsing="false" text="JFK" onAction="#changeValDest"/>
+          <MenuItem mnemonicParsing="false" onAction="#changeValDest" text="LAX" />
+          <MenuItem mnemonicParsing="false" onAction="#changeValDest" text="JFK" />
         </items>
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -105,10 +105,16 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </DatePicker>
-      <Button mnemonicParsing="false" prefHeight="18.0" prefWidth="79.0" text="Submit" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="TOP" onAction="#submit">
+      <Button mnemonicParsing="false" onAction="#submit" prefHeight="18.0" prefWidth="79.0" text="Submit" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="10.0" />
          </GridPane.margin>
       </Button>
+      <Label fx:id="error" textFill="RED" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <TextField fx:id="departTime" promptText="Time (24-Hour Clock)" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8">
+         <GridPane.margin>
+            <Insets left="200.0" right="10.0" />
+         </GridPane.margin>
+      </TextField>
    </children>
 </GridPane>
