@@ -62,6 +62,7 @@ public class FormController {
                     departureTime, calc.Calculate(departureTime, destination.getText()),
                     "$3.50"); //replace price when method is done
             pass.writeData();
+            pass.printTicket();
             error.setText("Ticket Created!");
         }
     }

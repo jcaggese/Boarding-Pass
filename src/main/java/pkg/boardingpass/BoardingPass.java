@@ -1,6 +1,6 @@
 package pkg.boardingpass;
 
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -80,6 +80,33 @@ public class BoardingPass {
         }
         catch (IOException e) {
             System.err.println("Could not create Ticket.");
+        }
+    }
+
+    /**
+     * Reads data from file and creates user readable version of that file
+     * Currently stores in a text file named passID + .txt
+     */
+    public void printTicket() {
+        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        try (BufferedReader input = new BufferedReader(new FileReader(filePath + passID))){
+            Files.write(Paths.get(filePath + passID + ".txt"),
+                    ("ID:  " + input.readLine() + "\n" +
+                            "Origin:  " + input.readLine() + "\n" +
+                            "Name:  " + input.readLine() + "\n" +
+                            "Email:  " + input.readLine() + "\n" +
+                            "Phone Number:  " + input.readLine() + "\n" +
+                            "Gender:  " + input.readLine() + "\n" +
+                            "Age:  " + input.readLine() + "\n" +
+                            "Date of Purchase:  " + input.readLine() + "\n" +
+                            "Destination:  " + input.readLine() + "\n" +
+                            "Departure Date:  " + input.readLine() + "\n" +
+                            "Estimated Time of Arrival:  " + input.readLine() + "\n" +
+                            "Price:  " + input.readLine()).getBytes());
+        }
+        catch (IOException e) {
+            System.err.println("Could not print Ticket.");
         }
     }
 
