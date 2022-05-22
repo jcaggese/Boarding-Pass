@@ -6,6 +6,8 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -53,14 +55,15 @@ public class FormController {
         else {
             error.setText("");
             //run BoardingPass functions from here
-            System.out.println(name.getText());
-            System.out.println(email.getText());
-            System.out.println(phone.getText());
-            System.out.println(gender.getText());
-            System.out.println(age.getText());
-            System.out.println(date.getValue());
-            System.out.println(destination.getText());
-            System.out.println(departure.getValue());
+            LocalDateTime departureTime = LocalDateTime.of(departure.getValue(), LocalTime.parse(departTime.getText()));
+            ETA calc = new ETA();
+            BoardingPass pass = new BoardingPass(name.getText(), email.getText(), phone.getText(),
+                    gender.getText(), age.getText(), date.getValue(), destination.getText(),
+                    departureTime, calc.Calculate(departureTime, destination.getText()),
+                    "$3.50"); //replace price when method is done
+            pass.writeData();
+            pass.printTicket();
+            error.setText("Ticket Created!");
         }
     }
 
